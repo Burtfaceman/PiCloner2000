@@ -1,14 +1,15 @@
 PiCloner2000
 
-This set of Linux scripts allows you to create a backup of a bootable media (such as an SD card in a Raspberry Pi), and restore/clone that backup to a different SD card while maintaining bootability.
+This set of Linux scripts allows you to create a backup of a bootable media (such as an SD card in a Raspberry Pi), and restore/clone that backup to another SD card while maintaining bootability.
 
 Raspberry Pis are mission-critical for my projects, so I want to be able to get back up and running quickly if a Pi's SD card conks out. As of June 2025, there doesn't appear to be a convenient way to make a backup of an SD card that can be restored to any old SD card. A full image backup of an SD card takes up more space than necessary (e.g. 16GB (the full capacity of the card), even if only 2GB is in use), and practically must be restored to an identical card. I wanted a better solution, so I created PiCloner2000.
 
 What sets PiCloner2000 apart from other methods?
 1. The source and destination media don't have to be the same size. It works as long as the destination card has enough space to hold what was on the source card.
-2. The backup is only as large as the amount of space that was in use on the media; e.g. if a 16GB SD card had 12GB free, the backup would be 4GB (or smaller due to compression).
+2. The backup is only as large as the amount of space that was in use on the media; e.g. if a 16GB SD card had 12GB free, the backup would be 4GB (or smaller thanks to compression).
 3. The backup (including boot partition and bootloader) is contained in one compressed file for easy storage.
-4. Easy to use.
+4. Checks source and destination SD cards for file system errors using "fsck".
+5. Excludes virtual and runtime directories (which you don't want in a backup; these are always recreated on boot).
 
 Usage:
 -Make the scripts executable
